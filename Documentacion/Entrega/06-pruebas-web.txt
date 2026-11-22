@@ -1,0 +1,18 @@
+> Building...
+√ Building...
+Application bundle generation complete. [2.612 seconds] - 2026-11-22T02:55:37.573Z
+
+
+ RUN  v5.1.0 C:/xampp/htdocs/SeguimientoRetos/frontend
+
+
+ Test Files  3 passed (3)
+      Tests  12 passed (12)
+   Start at  21:55:38
+   Duration  8.17s (environment 54%, transform 28%, setup 12%, import 5%)
+
+npm notice
+npm notice New major version of npm available! 11.20.0 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice

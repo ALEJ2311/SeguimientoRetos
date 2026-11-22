@@ -1,0 +1,4 @@
+Commit de implementación: b941f47
+Autor Git: ALEJ2311
+Mensaje: Agrega planes de recuperacion para semanas incumplidas
+Repositorio: https://github.com/ALEJ2311/SeguimientoRetos

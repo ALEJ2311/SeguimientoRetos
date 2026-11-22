@@ -1,0 +1,72 @@
+{
+  "metodo_verificacion": "APIClient de Django contra la base MySQL del proyecto; flujo de interfaz realizado en web y Android",
+  "plan": {
+    "id": 1,
+    "tarea": 46,
+    "reto": 6,
+    "reto_titulo": "Lectura por recuperar",
+    "semana": 7,
+    "porcentaje_original": 5,
+    "fecha_cierre": "2026-11-20",
+    "objetivo": "Recuperar la lectura pendiente",
+    "fecha_limite": "2026-11-28",
+    "acciones": [
+      {
+        "id": 1,
+        "descripcion": "Leer 20 páginas",
+        "orden": 1,
+        "completada": true,
+        "completada_en": "2026-11-21T22:21:02.249884-05:00"
+      },
+      {
+        "id": 2,
+        "descripcion": "Terminar el capítulo pendiente",
+        "orden": 2,
+        "completada": true,
+        "completada_en": "2026-11-21T22:21:41.599888-05:00"
+      },
+      {
+        "id": 3,
+        "descripcion": "Escribir un resumen",
+        "orden": 3,
+        "completada": true,
+        "completada_en": "2026-11-21T22:21:55.481361-05:00"
+      }
+    ],
+    "estado": "COMPLETADO",
+    "progreso": 100,
+    "total_acciones": 3,
+    "acciones_completadas": 3,
+    "creado": "2026-11-21T22:20:58.045988-05:00"
+  },
+  "semana_original": {
+    "id": 46,
+    "reto": 6,
+    "reto_titulo": "Lectura por recuperar",
+    "semana": 7,
+    "fecha_inicio": "2026-11-14",
+    "fecha_fin": "2026-11-20",
+    "descripcion": "Meta de la semana 7",
+    "porcentaje": 5,
+    "actualizado": "2026-11-21T21:56:58.779142-05:00",
+    "recuperacion_id": 1
+  },
+  "patch_semana_cerrada_status": 400,
+  "rechazo": {
+    "non_field_errors": [
+      "La semana 7 ya está cerrada; no se puede modificar."
+    ]
+  },
+  "porcentajes_preservados": {
+    "3": 50,
+    "4": 70,
+    "5": 0
+  },
+  "flujo_manual": [
+    "Primera acción en web: 33 %",
+    "Segunda acción en Android: 67 %",
+    "Actualizar en web: 67 %",
+    "Tercera acción en web: 100 %",
+    "Actualizar en Android: 100 %"
+  ]
+}
