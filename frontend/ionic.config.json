@@ -1,0 +1,7 @@
+{
+  "name": "Seguimiento de Retos",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
