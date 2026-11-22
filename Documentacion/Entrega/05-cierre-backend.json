@@ -1,0 +1,60 @@
+[
+  {
+    "caso": "rojo",
+    "reto_id": 5,
+    "tarea_id": 37,
+    "semana": 7,
+    "hoy": "2026-11-21",
+    "fecha_fin": "2026-11-20",
+    "porcentaje": 5,
+    "patch_cerrada_status": 400,
+    "respuesta": {
+      "non_field_errors": [
+        "La semana 7 ya está cerrada; no se puede modificar."
+      ]
+    }
+  },
+  {
+    "caso": "amarillo",
+    "reto_id": 5,
+    "tarea_id": 37,
+    "semana": 7,
+    "hoy": "2026-11-21",
+    "fecha_fin": "2026-11-20",
+    "porcentaje": 50,
+    "patch_cerrada_status": 400,
+    "respuesta": {
+      "non_field_errors": [
+        "La semana 7 ya está cerrada; no se puede modificar."
+      ]
+    }
+  },
+  {
+    "caso": "verde",
+    "reto_id": 5,
+    "tarea_id": 37,
+    "semana": 7,
+    "hoy": "2026-11-21",
+    "fecha_fin": "2026-11-20",
+    "porcentaje": 100,
+    "patch_cerrada_status": 400,
+    "respuesta": {
+      "non_field_errors": [
+        "La semana 7 ya está cerrada; no se puede modificar."
+      ]
+    }
+  },
+  {
+    "caso": "riesgo",
+    "reto_id": 5,
+    "tarea_id": 37,
+    "semana": 7,
+    "hoy": "2026-11-21",
+    "fecha_fin": "2026-11-22",
+    "porcentaje": 5,
+    "patch_cerrada_status": null,
+    "respuesta": {
+      "nota": "Semana abierta, a un dia del cierre y con 5 %."
+    }
+  }
+]

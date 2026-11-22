@@ -1,0 +1,2 @@
+96e4560 ALEJ2311 Agrega seguimiento semanal reactivo con semaforo y alertas en web y Android
+4993341 ALEJ2311 Crea el backend Django con API REST de retos y avances

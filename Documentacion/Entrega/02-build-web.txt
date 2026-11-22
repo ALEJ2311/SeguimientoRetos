@@ -1,0 +1,52 @@
+
+> frontend@0.0.0 build
+> ng build
+
+> Building...
+√ Building...
+Initial chunk files | Names             |  Raw size | Estimated transfer size
+main-HL6LRRUG.js    | main              |   1.11 MB |               191.33 kB
+chunk-7KXgn6Xe.js   | -                 |  38.41 kB |                13.30 kB
+styles-7X4OTOLD.css | styles            |  16.78 kB |                 3.15 kB
+chunk-CxtE7-yu.js   | -                 |   9.20 kB |                 3.37 kB
+chunk-DtUSP2R6.js   | -                 |   5.69 kB |                 2.10 kB
+chunk-6T7pzx8v.js   | -                 |   3.56 kB |                 1.39 kB
+chunk-BTIl8k59.js   | -                 |   1.08 kB |               478 bytes
+chunk-BPKjz2We.js   | -                 |   1.06 kB |               480 bytes
+chunk-DkCHqBPB.js   | -                 |   1.05 kB |               573 bytes
+chunk-DEQTwfN6.js   | -                 | 731 bytes |               731 bytes
+chunk-CABSGZFi.js   | -                 | 555 bytes |               555 bytes
+chunk-D9AI81tR.js   | -                 | 102 bytes |               102 bytes
+
+                    | Initial total     |   1.19 MB |               217.57 kB
+
+Lazy chunk files    | Names             |  Raw size | Estimated transfer size
+chunk-BltrUBUx.js   | reto-detalle-page |   7.55 kB |                 2.80 kB
+chunk-DTClE-rt.js   | -                 |   5.36 kB |                 2.28 kB
+chunk-CJb2xf_i.js   | ion-icon-entry    |   4.92 kB |                 1.81 kB
+chunk-CsRJzC3L.js   | p-BWbz71uB        |   4.91 kB |                 1.97 kB
+chunk-Bju4rjyM.js   | retos-lista-page  |   4.16 kB |                 1.74 kB
+chunk-MB-_5VrD.js   | reto-form-page    |   3.69 kB |                 1.55 kB
+chunk-DuWZW1T4.js   | alertas-page      |   2.63 kB |                 1.11 kB
+chunk-BAmK99FY.js   | p-DaojW_d_        |   1.64 kB |               761 bytes
+chunk-1WgjXSTw.js   | p-BmVRXR1y        | 933 bytes |               933 bytes
+chunk-C35jx92W.js   | p-Ds5vN3iu        | 642 bytes |               642 bytes
+chunk-DutZp9xL.js   | p-BBsseItU        | 483 bytes |               483 bytes
+chunk-D64otnhK.js   | p-D7-vHX0A        | 164 bytes |               164 bytes
+chunk-Br7jz6Gx.js   | p-CohRJRIu        | 162 bytes |               162 bytes
+chunk-YzM5Pa4E.js   | p-D_U0pDe5        | 138 bytes |               138 bytes
+chunk-D1saUh8-.js   | p-CRb2xRCz        | 130 bytes |               130 bytes
+...and 2 more lazy chunks files. Use "--verbose" to show all the files.
+
+Application bundle generation complete. [7.666 seconds] - 2026-11-22T01:37:31.132Z
+
+▲ [WARNING] bundle initial exceeded maximum budget. Budget 1.00 MB was not met by 189.22 kB with a total of 1.19 MB.
+
+
+Output location: C:\xampp\htdocs\SeguimientoRetos\frontend\dist\frontend
+
+npm notice
+npm notice New major version of npm available! 11.20.0 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice
