@@ -47,6 +47,42 @@ export interface TareaSemanal {
   descripcion: string;
   porcentaje: number;
   actualizado: string;
+  recuperacion_id?: number | null;
+}
+
+export type EstadoRecuperacion = 'PENDIENTE' | 'EN_RECUPERACION' | 'COMPLETADO' | 'VENCIDO';
+
+export interface AccionRecuperacion {
+  id: number;
+  descripcion: string;
+  orden: number;
+  completada: boolean;
+  completada_en: string | null;
+}
+
+export interface PlanRecuperacion {
+  id: number;
+  tarea: number;
+  reto: number;
+  reto_titulo: string;
+  semana: number;
+  porcentaje_original: number;
+  fecha_cierre: string;
+  objetivo: string;
+  fecha_limite: string;
+  acciones: AccionRecuperacion[];
+  estado: EstadoRecuperacion;
+  progreso: number;
+  total_acciones: number;
+  acciones_completadas: number;
+  creado: string;
+}
+
+export interface NuevoPlanRecuperacion {
+  tarea: number;
+  objetivo: string;
+  fecha_limite: string;
+  acciones: { descripcion: string }[];
 }
 
 /** Respuesta paginada de Django REST Framework. */

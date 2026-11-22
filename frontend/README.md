@@ -9,6 +9,7 @@ Aplicación Ionic 9 y Angular 22 que consume la API Django del proyecto. Sigue l
 - Semáforo: semanas futuras grises, actual azul, cerradas verdes (100 %), amarillas (10-99 %) o rojas (menos de 10 %).
 - Alertas por semanas cerradas en rojo y riesgo cuando faltan dos días o menos.
 - Un solo código para navegador y app Android mediante Capacitor 8.
+- Planes de recuperación con objetivo, fecha límite y acciones para semanas cerradas en rojo. El progreso del plan se guarda por separado y conserva el historial original.
 
 ## Desarrollo web
 
@@ -28,7 +29,9 @@ npm.cmd run build
 npx.cmd ng test --watch=false
 ```
 
-Las ocho pruebas de `core/semaforo.spec.ts` verifican fechas, cierre, umbrales y riesgo. Una prueba adicional de `seguimiento.service.spec.ts` simula el cambio de día, verifica el cierre sin recargar datos y evita avisos duplicados. El presupuesto de Angular se adaptó al proyecto Ionic: aviso de paquete inicial a 1 MB y límite a 2 MB. El paquete inicial medido es de aproximadamente 1,19 MB sin comprimir.
+Las ocho pruebas de `core/semaforo.spec.ts` verifican fechas, cierre, umbrales y riesgo. Una prueba adicional de `seguimiento.service.spec.ts` simula el cambio de día, verifica el cierre sin recargar datos y evita avisos duplicados. Tres pruebas de `paginas/recuperacion.page.spec.ts` comprueban el guardado sin duplicados, la conservación del formulario ante errores y la reversión de casillas cuando falla una petición. Se aprobaron 12 pruebas. El presupuesto de Angular mantiene un aviso a 1 MB y un límite a 2 MB; el paquete inicial es de aproximadamente 1,21 MB sin comprimir.
+
+La función propia se explica en [Plan de recuperación](../Documentacion/Entrega/README_RECUPERACION.md).
 
 ## Android
 

@@ -3,7 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Observable, map } from 'rxjs';
 
 import { urlApi } from './api.config';
-import { Avance, NuevoAvance, NuevoReto, Pagina, Reto, TareaSemanal } from './modelos';
+import { Avance, NuevoAvance, NuevoPlanRecuperacion, NuevoReto, Pagina, PlanRecuperacion, Reto, TareaSemanal } from './modelos';
 
 /** Solo habla con el backend. No guarda estado: eso es tarea de SeguimientoService. */
 @Injectable({ providedIn: 'root' })
@@ -29,6 +29,28 @@ export class RetosApi {
 
   listarTareas(): Observable<TareaSemanal[]> {
     return this.http.get<TareaSemanal[]>(`${this.base}/tareas/`);
+  }
+
+  obtenerTarea(id: number): Observable<TareaSemanal> {
+    return this.http.get<TareaSemanal>(`${this.base}/tareas/${id}/`);
+  }
+
+  listarRecuperaciones(tareaId: number): Observable<PlanRecuperacion[]> {
+    return this.http.get<PlanRecuperacion[]>(`${this.base}/recuperaciones/`, {
+      params: new HttpParams().set('tarea', tareaId),
+    });
+  }
+
+  obtenerRecuperacion(id: number): Observable<PlanRecuperacion> {
+    return this.http.get<PlanRecuperacion>(`${this.base}/recuperaciones/${id}/`);
+  }
+
+  crearRecuperacion(datos: NuevoPlanRecuperacion): Observable<PlanRecuperacion> {
+    return this.http.post<PlanRecuperacion>(`${this.base}/recuperaciones/`, datos);
+  }
+
+  cambiarAccionRecuperacion(planId: number, accionId: number, completada: boolean): Observable<PlanRecuperacion> {
+    return this.http.patch<PlanRecuperacion>(`${this.base}/recuperaciones/${planId}/acciones/${accionId}/`, { completada });
   }
 
   actualizarTarea(

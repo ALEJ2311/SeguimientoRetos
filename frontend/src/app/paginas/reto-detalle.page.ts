@@ -2,7 +2,7 @@ import { AsyncPipe } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import {
   IonBackButton,
   IonBadge,
@@ -45,7 +45,7 @@ import { SeguimientoService } from '../core/seguimiento.service';
 @Component({
   selector: 'app-reto-detalle',
   imports: [
-    AsyncPipe, ReactiveFormsModule, IonBackButton, IonBadge, IonButton, IonButtons, IonCard,
+    AsyncPipe, ReactiveFormsModule, RouterLink, IonBackButton, IonBadge, IonButton, IonButtons, IonCard,
     IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonHeader,
     IonInput, IonItem, IonLabel, IonList, IonNote, IonProgressBar, IonRange, IonSegment,
     IonSegmentButton, IonText, IonTitle, IonToolbar,
@@ -119,6 +119,11 @@ import { SeguimientoService } from '../core/seguimiento.service';
                     <ion-text color="danger">
                       <p>Riesgo: si no avanzas, esta semana se cerrará en rojo.</p>
                     </ion-text>
+                  }
+                  @if (s.semaforo === 'ROJO') {
+                    <ion-button fill="outline" color="tertiary" [routerLink]="['/recuperaciones', s.id]">
+                      {{ s.recuperacion_id ? 'Ver plan de recuperación' : 'Crear plan de recuperación' }}
+                    </ion-button>
                   }
                 </ion-label>
               </ion-item>

@@ -18,5 +18,9 @@ export const routes: Routes = [
     path: 'alertas',
     loadComponent: () => import('./paginas/alertas.page').then((m) => m.AlertasPage),
   },
+  {
+    path: 'recuperaciones/:tareaId',
+    loadComponent: () => import('./paginas/recuperacion.page').then((m) => m.RecuperacionPage),
+  },
   { path: '**', redirectTo: 'retos' },
 ];

@@ -1,5 +1,6 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from django.utils import timezone
 
 
 class Reto(models.Model):
@@ -68,3 +69,57 @@ class TareaSemanal(models.Model):
 
     def __str__(self):
         return f'{self.reto} - semana {self.semana}'
+
+
+class PlanRecuperacion(models.Model):
+    tarea = models.OneToOneField(
+        TareaSemanal, on_delete=models.CASCADE, related_name='recuperacion'
+    )
+    objetivo = models.CharField(max_length=200)
+    fecha_limite = models.DateField()
+    creado = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['fecha_limite', 'id']
+        verbose_name = 'plan de recuperación'
+        verbose_name_plural = 'planes de recuperación'
+
+    def __str__(self):
+        return f'Recuperación de {self.tarea}'
+
+    def resumen(self):
+        acciones = list(self.acciones.all())
+        realizadas = sum(accion.completada for accion in acciones)
+        total = len(acciones)
+        if total and realizadas == total:
+            estado = 'COMPLETADO'
+        elif self.fecha_limite < timezone.localdate():
+            estado = 'VENCIDO'
+        elif realizadas:
+            estado = 'EN_RECUPERACION'
+        else:
+            estado = 'PENDIENTE'
+        return {
+            'estado': estado,
+            'progreso': round(realizadas * 100 / total) if total else 0,
+            'total_acciones': total,
+            'acciones_completadas': realizadas,
+        }
+
+
+class AccionRecuperacion(models.Model):
+    plan = models.ForeignKey(
+        PlanRecuperacion, on_delete=models.CASCADE, related_name='acciones'
+    )
+    descripcion = models.CharField(max_length=200)
+    orden = models.PositiveSmallIntegerField()
+    completada = models.BooleanField(default=False)
+    completada_en = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        ordering = ['orden', 'id']
+        verbose_name = 'acción de recuperación'
+        verbose_name_plural = 'acciones de recuperación'
+
+    def __str__(self):
+        return self.descripcion

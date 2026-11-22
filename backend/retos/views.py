@@ -1,10 +1,17 @@
+from django.db import transaction
+from django.shortcuts import get_object_or_404
+from drf_spectacular.utils import extend_schema
 from rest_framework import mixins, status, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
-from .models import Avance, Reto, TareaSemanal
+from .filtros import PlanRecuperacionFiltro
+from .models import AccionRecuperacion, Avance, PlanRecuperacion, Reto, TareaSemanal
 from .semanas import crear_tareas_semanales
-from .serializers import AvanceSerializer, RetoSerializer, TareaSemanalSerializer
+from .serializers import (
+    AccionEstadoSerializer, AvanceSerializer, PlanRecuperacionSerializer,
+    RetoSerializer, TareaSemanalSerializer,
+)
 
 
 class RetoViewSet(viewsets.ModelViewSet):
@@ -44,8 +51,34 @@ class TareaSemanalViewSet(
 ):
     """Consultar y actualizar tareas semanales. Se crean solas; no se borran."""
 
-    queryset = TareaSemanal.objects.select_related('reto')
+    queryset = TareaSemanal.objects.select_related('reto', 'recuperacion')
     serializer_class = TareaSemanalSerializer
     filterset_fields = ['reto', 'semana']
     ordering_fields = ['semana']
     pagination_class = None
+
+
+class PlanRecuperacionViewSet(
+    mixins.CreateModelMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin,
+    viewsets.GenericViewSet,
+):
+    """Crear planes para semanas cerradas en rojo y consultar su recuperación."""
+
+    queryset = PlanRecuperacion.objects.select_related('tarea__reto').prefetch_related('acciones')
+    serializer_class = PlanRecuperacionSerializer
+    filterset_class = PlanRecuperacionFiltro
+    pagination_class = None
+
+    @extend_schema(request=AccionEstadoSerializer, responses=PlanRecuperacionSerializer)
+    @action(detail=True, methods=['patch'], url_path=r'acciones/(?P<accion_id>\d+)')
+    @transaction.atomic
+    def cambiar_accion(self, request, pk=None, accion_id=None):
+        plan = self.get_object()
+        accion = get_object_or_404(
+            AccionRecuperacion.objects.select_for_update(), pk=accion_id, plan=plan
+        )
+        serializer = AccionEstadoSerializer(accion, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        actualizado = self.get_queryset().get(pk=plan.pk)
+        return Response(self.get_serializer(actualizado).data)
